@@ -112,7 +112,8 @@ uniq = $(if $1,$(firstword $1) $(call uniq,$(filter-out $(firstword $1),$1)))
 # Configurable arch path
 ARCH_PATH ?= $(CONTIKI)/arch
 
-target_makefile := $(wildcard $(ARCH_PATH)/platform/$(TARGET)/Makefile.$(TARGET) ${foreach TDIR, $(TARGETDIRS), $(TDIR)/$(TARGET)/Makefile.$(TARGET)})
+target_makefile := $(wildcard $(CONTIKI)/$(CONTIKI_NG_PLATFORMS_DIR)/$(TARGET)/Makefile.$(TARGET) \
+                   $(foreach TDIR, $(TARGETDIRS), $(TDIR)/$(TARGET)/Makefile.$(TARGET)))
 
 # Check if the target makefile exists, and create the object directory if necessary.
 ifeq ($(strip $(target_makefile)),)
