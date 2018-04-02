@@ -356,7 +356,7 @@ clean:
 	@echo Target $(TARGET) cleaned
 
 distclean:
-	@for TARG in `ls $(ARCH_PATH)/platform $(TARGETDIRS)`; do \
+	@for TARG in `ls $(CONTIKI)/$(CONTIKI_NG_PLATFORMS_DIR) $(TARGETDIRS)`; do \
 		echo Running: $(MAKE) TARGET=$$TARG clean; \
 		$(MAKE) TARGET=$$TARG clean; \
 	done
@@ -444,7 +444,7 @@ endif
 include $(CONTIKI)/Makefile.help
 
 targets:
-	@ls $(ARCH_PATH)/platform $(TARGETDIRS)
+	@ls $(CONTIKI)/$(CONTIKI_NG_PLATFORMS_DIR) $(TARGETDIRS)
 
 boards:
 ifdef BOARD
@@ -466,7 +466,7 @@ savedefines:
 	@echo "saving Makefile.$(TARGET).defines"
 	@echo >Makefile.$(TARGET).defines "DEFINES = $(DEFINES)"
 
-VIEWCONF = $(CONTIKI)/tools/viewconf/viewconf.c
+VIEWCONF = $(CONTIKI)/$(CONTIKI_NG_TOOLS_DIR)/viewconf/viewconf.c
 viewconf:
 	@echo "----------------- Make variables: --------------"
 	@echo "##### \"TARGET\": ________________________________ $(TARGET)"
