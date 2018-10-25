@@ -22,6 +22,8 @@ LDFLAGS += -mthumb -mlittle-endian
 OBJDUMP_FLAGS += --disassemble --source --disassembler-options=force-thumb
 
 ### Are we building with code size optimisations?
+TOOLCHAIN_CAN_OPTIMIZE = 1
+
 SMALL ?= 1
 ifeq ($(SMALL),1)
   CFLAGS += -Os

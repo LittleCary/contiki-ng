@@ -272,6 +272,15 @@ vpath %.s $(SOURCEDIRS)
 
 CFLAGS += ${addprefix -I,$(SOURCEDIRS) $(CONTIKI)}
 
+### Set the desirable optimization level. Possible to override
+BUILD_OPTIMISATION_LEVEL ?= -Os
+
+ifeq($(TOOLCHAIN_CAN_OPTIMIZE), 1)
+  ifneq($(BUILD_OPTIMISATION_LEVEL),)
+    CFLAGS += $(BUILD_OPTIMISATION_LEVEL)
+  endif
+endif
+
 ### Check for a git repo and pass version if found
 ### git.exe in Windows cmd shells may require no stderr redirection
 ifndef RELSTR
