@@ -363,7 +363,7 @@ distclean:
 	done
 	-$(Q)rm -rf $(BUILD_DIR)
 
--include $(ARCH_PATH)/platform/$(TARGET)/Makefile.customrules-$(TARGET)
+-include $(CONTIKI)/$(CONTIKI_NG_PLATFORMS_DIR)/$(TARGET)/Makefile.customrules-$(TARGET)
 
 ifndef CUSTOM_RULE_C_TO_OBJECTDIR_O
 $(OBJECTDIR)/%.o: %.c | $(OBJECTDIR)
